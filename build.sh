@@ -20,7 +20,7 @@ fi
 if [ "$device" = "lettuce-64" ]; then
 device_name=lettuce
 fi
-zip=zip-$device
+zip=zip-$device_name
 date=`date +%Y%m%d`
 config=velvet_"$device"_defconfig
 kerneltype="Image"
@@ -92,11 +92,11 @@ else
 	esac
 fi
 
-echo ""$zip"ping..."
+echo "Zipping..."
 if [ -f "$zip"/tools/"$kerneltype" ]; then
 	cd "$zip"
-	"$zip" -r ../"$kernel"."$version"-"$rom"."$vendor"."$device"."$date"."$zip" .
-	mv ../"$kernel"."$version"-"$rom"."$vendor"."$device"."$date"."$zip" $build
+	zip -r ../"$kernel"."$version"-"$rom"."$vendor"."$device"."$date".zip .
+	mv ../"$kernel"."$version"-"$rom"."$vendor"."$device"."$date".zip $build
 	rm tools/"$kerneltype"
 	cd ..
 	rm -rf arch/arm64/boot/"$kerneltype"
