@@ -12,7 +12,7 @@ build=/home/arnavgosain/velvet/out/lettuce
 fi
 kernel="velvet"
 version="R1"
-rom="cm"
+rom="cm-12.1"
 vendor="yu"
 if [ "$device" = "tomato-64" ]; then
 device_name=tomato
