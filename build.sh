@@ -4,16 +4,16 @@ LC_ALL=C date +%Y-%m-%d
 export PATH=$(pwd):/home/arnavgosain/velvet/toolchains/aarch64-linux-android-4.9/bin:$PATH
 kernel_dir=$PWD
 toolchain="aarch64-linux-android-"
-if [ "$device" = "tomato-64" ]; then
-build=/home/arnavgosain/velvet/out/tomato
-fi
-if [ "$device" = "lettuce-64" ]; then
-build=/home/arnavgosain/velvet/out/lettuce
-fi
 kernel="velvet"
 version="R1"
 rom="cm-12.1"
 vendor="yu"
+if [ "$device" = "tomato-64" ]; then
+build=/home/arnavgosain/velvet/out/tomato/$rom/
+fi
+if [ "$device" = "lettuce-64" ]; then
+build=/home/arnavgosain/velvet/out/lettuce/$rom/
+fi
 if [ "$device" = "tomato-64" ]; then
 device_name=tomato
 fi
@@ -21,7 +21,7 @@ if [ "$device" = "lettuce-64" ]; then
 device_name=lettuce
 fi
 zip=zip-$device_name
-date=`date +%Y%m%d`
+date=`date +"%Y%m%d-%H%M"`
 config=velvet_"$device"_defconfig
 kerneltype="Image"
 jobcount="-j$(grep -c ^processor /proc/cpuinfo)"
