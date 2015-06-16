@@ -26,6 +26,7 @@ config=velvet_"$device"_defconfig
 kerneltype="Image"
 jobcount="-j$(grep -c ^processor /proc/cpuinfo)"
 modules_dir=$kernel_dir/"$zip"/system/lib/modules
+zip_name="$kernel"."$version"-"$rom"."$vendor"."$device"."$date".zip
 export KBUILD_BUILD_USER=arnavgosain
 export KBUILD_BUILD_HOST=velvet
 
@@ -95,13 +96,13 @@ fi
 echo "Zipping..."
 if [ -f "$zip"/tools/"$kerneltype" ]; then
 	cd "$zip"
-	zip -r ../"$kernel"."$version"-"$rom"."$vendor"."$device"."$date".zip .
-	mv ../"$kernel"."$version"-"$rom"."$vendor"."$device"."$date".zip $build
+	zip -r ../$zip_name .
+	mv ../$zip_name $build
 	rm tools/"$kerneltype"
 	cd ..
 	rm -rf arch/arm64/boot/"$kerneltype"
 	export outdir="$build"
-	echo "Done..."
+	echo "Package complete: "$build"/"$zip_name""
 	exit 0;
 else
 	echo "No $kerneltype found..."
