@@ -82,6 +82,7 @@ typedef enum{
 static GE_T gsl_gesture_status = GE_DISABLE;
 static volatile unsigned int gsl_gesture_flag = 0;
 static char gsl_gesture_c = 0;
+static bool dozing = false;
 struct timeval startup;
 #endif
 
@@ -1406,6 +1407,7 @@ static void gsl_enter_doze(struct gsl_ts_data *ts, bool bCharacterGesture)
 	//gsl_gesture_status = GE_NOWORK;
 	msleep(10);
 	gsl_gesture_status = GE_ENABLE;
+	dozing = true;
 
 }
 static void gsl_quit_doze(struct gsl_ts_data *ts)
@@ -1413,6 +1415,7 @@ static void gsl_quit_doze(struct gsl_ts_data *ts)
 	u8 buf[4] = {0};
 	//u32 tmp;
 
+	dozing = false;
 	gsl_gesture_status = GE_DISABLE;
 	free_irq(ts->client->irq,ddata);
 		
@@ -1642,6 +1645,7 @@ static void gsl_report_work(struct work_struct *work)
 		//print_info("GSL:::0x80=%02x%02x%02x%02x[%d]\n",buf[3],buf[2],buf[1],buf[0],test_count++);
 		//print_info("GSL:::0x84=%02x%02x%02x%02x\n",buf[7],buf[6],buf[5],buf[4]);
 		//print_info("GSL:::0x88=%02x%02x%02x%02x\n",buf[11],buf[10],buf[9],buf[8]);
+		if(GE_ENABLE == gsl_gesture_status && ((gsl_gesture_flag == 1)||(gsl_gesture_flag == 2)))
 		{
 			struct timeval now;
 			do_gettimeofday(&now);
@@ -1978,7 +1982,7 @@ static void gsl_ts_resume(void)
 
 	/*Gesture Resume*/
 	#ifdef GSL_GESTURE
-		if((gsl_gesture_flag == 1)||(gsl_gesture_flag == 2)){
+		if((gsl_gesture_flag == 1)||(gsl_gesture_flag == 2) || dozing){
 			gsl_quit_doze(ddata);
 			{
 			int err = 0;
