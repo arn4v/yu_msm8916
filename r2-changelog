@@ -1,0 +1,31 @@
+b17cd4b69db581be58d6cf10744dd9f990f96909 Revert "cpufreq: ondemand: disable cpu-boost when switched to ondemand"
+3324784617904f544f13226d696316871c1bee36 Revert "Optimize kernel cfbfillrect function"
+a0d88423055da72d5ac3c49fc3b26e68c91e4fce sched: LOAD_FREQ (4*HZ+61) avoids loadavg Moire
+ce8cbdb1c17f7681b92afdf36e895fc6324e2703 cpufreq: Break out early when frequency equals target_freq
+77eb9aca45022bd8b675642ba9c6cce5c19c7f28 audit: Imma let you finish, but shut up
+0d13806ab563f3903e9a4f0a0d4c44f91f8c69d5 selinux: just shut up
+f1674365ee4046056ea4f29032c2800ae11b31df writeback: increase bdi_min_ratio to 5 in light of the latest writeback commit.
+752411270d2da82a9a39eabf4f0ab628426877e9 PM / devfreq: Remove unused simple_ondemand governor data
+191eaac1ea7eafd1d200d2910869f8ef26e2edd0 PM: devfreq: Allow userspace configuration of simple_ondemand
+27ae796199544e052f2982bc85fd47f08c8c8c62 PM: devfreq: Always reflect a change of polling interval
+bee1457532d24c2fe11a8ec288c2162a8457d652 int_sqrt: Improve 3x faster integer sqrt.
+38e284ffe81653b628006d6abd1ac2d0c232bf10 int_sqrt.c: Correction square root algo with naming
+8ccefc0951980bf9dc71136d4f83bc90178f544b power: catch wake-up requests in suspend_again
+335bc2882c42967576f543194c0e25624117794d Enable quickwakeup
+3985e5662f5251336eba02a93e64b73d9269ca63 power: quickwakeup: initial driver
+71dbf7ae56096a07d4bfcc09e491e2840a4bf78f readahead: Fix an error (thx ramgear)
+62fb413a6084934922002ffa3c405e88e479f99d Readahead: Optimize divide/multiply by power of 2 using L/R shift (thx ramgear)
+4c07cbe7574c3d68de8b28ba112675b93fd39c1d Add intelliactive [faux123]
+a580818e407bbcdeb54340f975d10c5a8e3f2240 block: row: add magic values.
+7c60e70f5070070889fcaa8ab6d78db2464032c2 block: deadline: Optimize for non-rotational
+77b272ebea6abfc6ea82809fe9d76fa151ecee00 Speed up console framebuffer imageblit function
+45cd5dc8b5a9e7c14e0465f92523853d68d9c8a0 Optimize kernel cfbfillrect function
+e8d1e3cc4a04a00668a525e901cad4e9f7948457 cpufreq: ondemand: disable cpu-boost when switched to ondemand
+0950900ce355ad662e53975ff83bfb6159e51578 Writeback: Fix occasional slow sync [@Pafcholini]
+3da05dc3b7b75fbb54f7e7af77c1fb7d5205f2f4 mm: optimize Kernel Samepage Merging (KSM)
+0123b9bf12e1759fe32ce90dd09b819b7b8c5789 Topology: Enhance For MultiCore Decision Making
+baefd718f3ec110df9bbd6d0257ff78973bf86d0 Revert "Revert "arm64: Add 32-bit sigcontext definition to uapi signcontext.h""
+05dc57c24e7358ea1c33695356883ece63a1b9d8 cpufreq: interactive: don't scale up if load is <= 5%, it's not worth it
+d7c8ee5567f246b4d20e66304a8ba81b82513b70 Add exFAT support
+4b2727f90981bd262f49c7ec07049ea24c2a3e24 cpufreq: ondemand: update code to Linux v3.18
+c115e7c1a714b21d2dbdb1312743b27d297a9941 cpufreq: Introduce new relation for freq selection
